@@ -24,6 +24,24 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard.vue'),
             },
             {
+                path: '/cards-inserter',
+                name: 'cards-inserter',
+                meta: {
+                    title: '添加工单',
+                    noAuth: true
+                },
+                component: () => import( '@/views/cards/Inserter.vue'),
+            },
+            {
+                path: '/cards-query',
+                name: 'cards-query',
+                meta: {
+                    title: '查看工单',
+                    noAuth: true
+                },
+                component: () => import( '@/views/cards/Query.vue'),
+            },
+            {
                 path: '/system-user',
                 name: 'system-user',
                 meta: {

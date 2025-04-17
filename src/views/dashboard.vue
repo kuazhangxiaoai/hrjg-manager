@@ -1,6 +1,6 @@
 <template>
     <div class="dashboard">
-      <Card v-for="(item, index) in cards":key="index" :itemInfo="item"></Card>
+      <QueryCard v-for="(item, index) in cards":key="index" :itemInfo="item"></QueryCard>
       <InsertCard></InsertCard>
     </div>
 </template>
@@ -19,7 +19,7 @@ import {
 import { CanvasRenderer } from 'echarts/renderers';
 import VChart from 'vue-echarts';
 import { dashOpt1, dashOpt2, mapOptions } from './chart/options';
-import Card from './Card.vue';
+import QueryCard from './QueryCard.vue';
 import chinaMap from '@/utils/china';
 import {useCardStore} from "@/store/card";
 import InsertCard from "@/views/InsertCard.vue";

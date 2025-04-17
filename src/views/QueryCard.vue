@@ -1,11 +1,12 @@
 
 <template>
-  <div class="card">{{props.itemInfo}}</div>
+  <div class="card" @click="QueryCard">{{props.itemInfo}}</div>
+  <router-view></router-view>
 </template>
 
 <script setup lang="ts">
-
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
 const props = defineProps<{
   itemInfo: {
     title: string;
@@ -14,6 +15,10 @@ const props = defineProps<{
       e: MouseEvent | TouchEvent,
   ) => void;
 }>();
+
+const QueryCard = () => {
+  router.push('/cards-query');
+}
 
 </script>
 

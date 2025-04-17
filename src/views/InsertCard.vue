@@ -1,11 +1,16 @@
 <template>
   <div class="insert-card">
-    <img src="../assets/img/add.png" class='inserter' v-tooltip="'添加工单'"></img>
+    <img src="../assets/img/add.png" class='inserter' v-tooltip="'添加工单'" @click="OpenInserter"></img>
+    <router-view></router-view>
   </div>
 </template>
 
 <script setup lang="ts">
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
+const OpenInserter = () =>{
+  router.push('/cards-inserter');
+}
 
 </script>
 
@@ -32,5 +37,6 @@
   content: url('../assets/img/add_hover.png');
   cursor: pointer;
 }
+
 
 </style>
