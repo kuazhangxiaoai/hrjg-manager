@@ -11,6 +11,7 @@
 		"@element-plus/icons-vue": "*",
 		"@wangeditor/editor": "^5.1.23",
 		"@wangeditor/editor-for-vue": "^5.1.12",
+		"@icon-park/vue-next": "^1.4.2",
 		"axios": "^1.6.3",
 		"countup.js": "^2.8.0",
 		"echarts": "^5.5.0",
