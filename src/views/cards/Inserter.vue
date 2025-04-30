@@ -1,76 +1,86 @@
 <template>
   <div class="insertDialog">
-    <div class="insert-title">标题:
-      <input id="input-title" v-model="title"/>
+    <div class="insert-title">
+      <span>标题: </span>
+      <el-input id="input-title" style="display: inline;" v-model="title" ></el-input>
     </div>
     <div class="insert-product-id">生产编号:
-      <input id="input-product-id" v-model="productId"/>
+      <el-input id="input-product-id" style="display: inline;" v-model="productId"/>
     </div>
     <div class="insert-product-date" @click="OpenDatePannel">生产日期:
-      <input id="input-product-date" v-model="productDate"/>
+      <el-date-picker
+          v-model="productDate"
+          type="date"
+          placeholder="请选择生产日期">
+        </el-date-picker>
+      <!--<input id="input-product-date" v-model="productDate"/>-->
     </div>
     <div class="insert-struct-id">结构号:
-      <input id="input-struct-id" v-model="structId"/>
+      <el-input id="input-struct-id" style="display: inline;" v-model="structId"/>
     </div>
     <div class="insert-plan-id">计划编号:
-      <input id="input-plan-id" v-model="planId"/>
+      <el-input id="input-plan-id" style="display: inline;" v-model="planId"/>
     </div>
     <hr class="dashed-line-1" />
     <div class="insert-product-type">产品规格:
-      <input id="input-product-type-id" style="width: 300px;" v-model="productType"/>
+      <el-input id="input-product-type-id" style="width: 300px; display: inline;" v-model="productType"/>
     </div>
     <div class="insert-complete-date">完工日期:
-      <input id="input-product-date-id" style="width: 300px;" v-model="completeDate"/>
+      <el-date-picker
+          v-model="completeDate"
+          type="date"
+          placeholder="请选择完工日期">
+      </el-date-picker>
     </div>
     <div class="insert-count">数量:
-      <input id="input-count-id" v-model="count"/>
+      <el-input id="input-count-id" style="display: inline;" v-model="count"/>
     </div>
     <div class="insert-content"><div>喷码内容:</div>
       <textarea id="input-content-id" style="position: relative; right: 5px; width: 85%; height: 150px" v-model="content"/>
       <div class="mosaic"></div>
     </div>
     <div class="insert-font-height">字符高度:
-      <input id="input-font-height-id" v-model="fontHeight"/>
+      <el-input id="input-font-height-id" style="display: inline;" v-model="fontHeight"/>
     </div>
     <div class="insert-note">备注:
-      <input id="input-note-id" style="width: 92%; right: 0px" v-model="note"/>
+      <el-input id="input-note-id" style="position: relative; width: 92%; right: 0px;" v-model="note"/>
     </div>
     <hr class="dashed-line-2" />
     <div class="appendix">
       <div class="appendix-cid">序号:
-        <input id="input-appendix-id" v-model="appendixId"/>
+        <el-input id="input-appendix-id" v-model="appendixId"/>
       </div>
       <div class="appendix-order">
         工序:
-        <input id="input-appendix-order-id" v-model="order"/>
+        <el-input id="input-appendix-order-id" v-model="order"/>
       </div>
       <div class="appendix-material-code">
         材料编码:
-        <input id="input-appendix-material-id" v-model="materialId"/>
+        <el-input id="input-appendix-material-id" v-model="materialId"/>
       </div>
       <div class="appendix-material-name">
         材料名称:
-        <input id="input-appendix-material-name-id" v-model="materialName"/>
+        <el-input id="input-appendix-material-name-id" v-model="materialName"/>
       </div>
       <div class="appendix-material-type">
         规格:
-        <input id="input-appendix-material-type-id" style="width: 130px; right: 0px" v-model="materialType"/>
+        <el-input id="input-appendix-material-type-id" style="width: 130px; right: 0px" v-model="materialType"/>
       </div>
       <div class="appendix-material-unit">
         单位:
-        <input id="input-appendix-material-unit-id" style="width: 130px; right: 0px" v-model="materialUnit"/>
+        <el-input id="input-appendix-material-unit-id" style="width: 130px; right: 0px" v-model="materialUnit"/>
       </div>
       <div class="appendix-material-plan-use">
         计划用量:
-        <input id="input-appendix-material-plan-use-id" style="width: 130px; right: 0px" v-model="planUse"/>
+        <el-input id="input-appendix-material-plan-use-id" style="width: 130px; right: 0px" v-model="planUse"/>
       </div>
       <div class="appendix-material-give-use">
         领料数量:
-        <input id="input-appendix-material-give-use-id" style="width: 130px; right: 0px" v-model="give"/>
+        <el-input id="input-appendix-material-give-use-id" style="width: 130px; right: 0px" v-model="give"/>
       </div>
       <div class="appendix-material-real-use">
         实际用量:
-        <input id="input-appendix-material-real-use-id" style="width: 130px; right: 0px" v-model="realUse"/>
+        <el-input id="input-appendix-material-real-use-id" style="width: 130px; right: 0px" v-model="realUse"/>
       </div>
     </div>
     <div class="buttons">
@@ -161,8 +171,10 @@ const submit = () => {
 
 .insert-title{
   position: relative;
+  display: inline-block;
   justify-self: center;
-  top: 2%;
+  top: 1%;
+  text-align: left;
 }
 
 .insert-product-id{
@@ -321,7 +333,7 @@ const submit = () => {
   float: left;
   justify-self: left ;
   left: 0%;
-  top: 45%;
+  top: 55%;
 }
 
 .appendix-material-unit{
@@ -329,28 +341,28 @@ const submit = () => {
   float: left;
   justify-self: left ;
   left: 20%;
-  top: 45%;
+  top: 55%;
 }
 .appendix-material-plan-use{
   position: absolute;
   float: left;
   justify-self: left ;
   left: 40%;
-  top: 45%;
+  top: 55%;
 }
 .appendix-material-give-use{
   position: absolute;
   float: left;
   justify-self: left ;
   left: 60%;
-  top: 45%;
+  top: 55%;
 }
 .appendix-material-real-use{
   position: absolute;
   float: left;
   justify-self: left ;
   right: 0%;
-  top: 45%;
+  top: 50%;
 }
 .buttons{
   position: absolute;
