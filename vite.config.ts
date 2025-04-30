@@ -16,6 +16,7 @@ export default defineConfig({
 			resolvers: [ElementPlusResolver()]
 		})
 	],
+
 	optimizeDeps: {
 		include: ['schart.js']
 	},
@@ -28,4 +29,14 @@ export default defineConfig({
 	define: {
 		__VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "true",
 	},
+	server:{
+		proxy:{
+			'/interface':{
+				target: 'http://localhost:8088/hrjg',
+				changeOrigin: true,
+				rewrite: (path)=>path.replace(/^\/interface/, '')
+			}
+		},
+	}
+
 });

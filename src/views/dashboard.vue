@@ -23,6 +23,9 @@ import QueryCard from './QueryCard.vue';
 import chinaMap from '@/utils/china';
 import {useCardStore} from "@/store/card";
 import InsertCard from "@/views/InsertCard.vue";
+import {computed, onMounted, onUnmounted, ref, watch} from "vue";
+import axios from "axios";
+import {baseUrl} from "@/utils/global";
 use([
     CanvasRenderer,
     BarChart,
@@ -36,7 +39,16 @@ use([
     MapChart,
 ]);
 registerMap('china', chinaMap);
-let cards = useCardStore().getCards;
+const cards = ref([]);
+let timer = null
+onMounted(() => {
+  useCardStore().queryCards()
+  axios.get("/interface/api/cards/")
+      .then(res => {
+        cards.value = res.data
+        useCardStore().setCards(cards.value)
+      })
+})
 
 
 

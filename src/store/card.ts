@@ -1,10 +1,12 @@
 // useMap2DStore.ts
 import { defineStore } from 'pinia'
+import {baseUrl} from "@/utils/global";
+import axios from "axios";
 
 export const useCardStore = defineStore('map2d', {
     state: () => ({
         count: 3,
-        cards: ['A', 'B', 'C'],
+        cards: [],
     }),
 
     getters:{
@@ -13,12 +15,22 @@ export const useCardStore = defineStore('map2d', {
         },
     },
 
+
     actions: {
         setCount(count: bigint) {
             this.count = count
         },
-        setCards(cards: object) {
-            this.cards = cards
+        queryCards(){
+            axios.get("/interface/api/cards/")
+            .then(res => {
+                this.cards = res.data
+                console.log(this.cards)
+                return this.cards;
+            })
+            return null
+        },
+        setCards(cards: Array<object>) {
+            this.cards = Array.from(cards)
         },
         addCard(card: object){
             this.cards.push(card)
